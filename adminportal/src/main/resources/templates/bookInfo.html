@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>bookInfo</title>
+</head>
+<body>
+<h3 th:text="${book.title}">title</h3>
+<table>
+    <tr>
+        <td><span th:text="'Author:'+${book.author}">author</span></td>
+        <td><span th:text="'Format:'+${book.format}">format</span></td>
+    </tr>
+    <tr>
+        <td><span th:text="'Publisher:'+${book.publisher}">publisher</span></td>
+        <td><span th:text="'ISBN:'+${book.isbn}">isbn</span></td>
+    </tr>
+    <tr>
+        <td><span th:text="'Publication Date:'+${book.publication_date}">publication_date</span></td>
+        <td><span th:text="'Shipping Weight:'+${book.shipping_weight}">shipping_weight</span></td>
+    </tr>
+    <tr>
+        <td><span th:text="'Language:'+${book.language}">language</span></td>
+        <td><span th:text="'List Price:'+${book.list_price}">list_price</span></td>
+    </tr>
+    <tr>
+        <td><span th:text="'Category:'+${book.category}">category</span></td>
+        <td><span th:text="'Our Price:'+${book.our_price}">our_price</span></td>
+    </tr>
+    <tr>
+        <td><span th:text="'Pages:'+${book.number_of_pages}">number_of_pages</span></td>
+        <td><span th:text="'Number in Stock:'+${book.in_stock_number}">in_stock_number</span></td>
+    </tr>
+    <tr>
+        <td ><span>Description:</span></td>
+    </tr>
+</table>
+<p th:text="${book.description}">description</p>
+</body>
+</html>

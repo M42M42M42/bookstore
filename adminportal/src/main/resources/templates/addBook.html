@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+</head>
+<body>
+<form action="#" th:action="@{add}" th:object="${book}" method="post">
+    <label>Title<input type="text" th:field="*{title}"/></label>
+    <label>Author<input type="text" th:field="*{author}"/></label>
+    <label>Publisher<input type="text" th:field="*{publisher}"/></label>
+    <label>Publication Date<input type="date" th:field="*{publication_date}"/></label>
+    <label>Language
+        <select th:field="*{language}">
+            <option th:value="'English'">English</option>
+            <option th:value="'Chinese'">Chinese</option>
+        </select>
+    </label>
+    <label>Category
+        <select th:field="*{category}">
+            <option th:value="'Arts & Literature'">Arts & Literature</option>
+            <option th:value="'Management'">Management</option>
+            <option th:value="'Engineering'">Engineering</option>
+            <option th:value="'Fiction'">Fiction</option>
+            <option th:value="'Programming'">Programming</option>
+        </select>
+    </label>
+    <label>Pages<input type="text" th:field="*{number_of_pages}"/></label>
+    <label>Format
+        <select th:field="*{format}">
+            <option th:value="'paperback'">paperback</option>
+            <option th:value="'hardcover'">hardcover</option>
+        </select>
+    </label>
+    <label>ISBN<input type="text" th:field="*{isbn}"/></label>
+    <label>Shipping Weight<input type="text" th:field="*{shipping_weight}"/></label>
+    <label>List Price<input type="text" th:field="*{list_price}"/></label>
+    <label>Our Price<input type="text" th:field="*{our_price}"/></label>
+    <label>Number in Stock<input type="text" th:field="*{in_stock_number}"/></label>
+    <label>Status
+        <input type="radio" name="Status" th:value="1" th:field="*{active}"/>Active
+        <input type="radio" name="Status" th:value="0" th:field="*{active}"/>Inactive
+    </label>
+    <label>Description
+        <textarea th:field="*{description}"></textarea>
+    </label>
+    <label>
+        <button type="submit" value="Submit">Add Book</button>
+    </label>
+</form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th><span>Id</span></th>
+        <th><span>Title</span></th>
+        <th><span>Author</span></th>
+        <th><span>Category</span></th>
+        <th><span>List_price</span></th>
+        <th><span>Our_price</span></th>
+        <th><span>Active</span></th>
+        <th><span>Operation</span></th>
+    </tr>
+    <tr th:each="book : ${bookList}">
+        <td><span th:scope="row" th:text="${book.id}">id</span></td>
+        <td><a th:text="${book.title}" th:href="@{/book/bookinfo?id={id}(id=${book.id})}">title</a></td>
+        <td><span th:text="${book.author}">author</span></td>
+        <td><span th:text="${book.category}">category</span></td>
+        <td><span th:text="${book.list_price}">list_price</span></td>
+        <td><span th:text="${book.our_price}">our_price</span></td>
+        <td><span th:text="${book.active}">active</span></td>
+        <td><a th:href="@{/book/delete?id={id}(id=${book.id})}"><button>Delete</button></a></td>
+    </tr>
+</table>
+
+
+</body>
+</html>
