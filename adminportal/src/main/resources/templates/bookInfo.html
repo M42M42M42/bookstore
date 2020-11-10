@@ -2,9 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>bookInfo</title>
+    <title>Book Info</title>
+    <link rel="stylesheet"  th:href="@{css/bootstrap.min.css}"/>
 </head>
 <body>
+<div role="navigation" th:replace="~{commons::topbar}"></div>
 <h3 th:text="${book.title}">title</h3>
 <table>
     <tr>
@@ -36,5 +38,9 @@
     </tr>
 </table>
 <p th:text="${book.description}">description</p>
+
+
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

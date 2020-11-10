@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Book</title>
+    <link rel="stylesheet"  th:href="@{css/bootstrap.min.css}"/>
 </head>
 <body>
+<div role="navigation" th:replace="~{commons::topbar}"></div>
+
 <form action="#" th:action="@{add}" th:object="${book}" method="post">
-    <label>Title<input type="text" th:field="*{title}"/></label>
-    <label>Author<input type="text" th:field="*{author}"/></label>
-    <label>Publisher<input type="text" th:field="*{publisher}"/></label>
-    <label>Publication Date<input type="date" th:field="*{publication_date}"/></label>
+    <label>Title<input type="text" th:field="*{title}"/></label><br>
+    <label>Author<input type="text" th:field="*{author}"/></label><br>
+    <label>Publisher<input type="text" th:field="*{publisher}"/></label><br>
+    <label>Publication Date<input type="date" th:field="*{publication_date}"/></label><br>
     <label>Language
         <select th:field="*{language}">
             <option th:value="'English'">English</option>
             <option th:value="'Chinese'">Chinese</option>
         </select>
-    </label>
+    </label><br>
     <label>Category
         <select th:field="*{category}">
             <option th:value="'Arts & Literature'">Arts & Literature</option>
@@ -24,29 +27,32 @@
             <option th:value="'Fiction'">Fiction</option>
             <option th:value="'Programming'">Programming</option>
         </select>
-    </label>
-    <label>Pages<input type="text" th:field="*{number_of_pages}"/></label>
+    </label><br>
+    <label>Pages<input type="text" th:field="*{number_of_pages}"/></label><br>
     <label>Format
         <select th:field="*{format}">
             <option th:value="'paperback'">paperback</option>
             <option th:value="'hardcover'">hardcover</option>
         </select>
-    </label>
-    <label>ISBN<input type="text" th:field="*{isbn}"/></label>
-    <label>Shipping Weight<input type="text" th:field="*{shipping_weight}"/></label>
-    <label>List Price<input type="text" th:field="*{list_price}"/></label>
-    <label>Our Price<input type="text" th:field="*{our_price}"/></label>
-    <label>Number in Stock<input type="text" th:field="*{in_stock_number}"/></label>
+    </label><br>
+    <label>ISBN<input type="text" th:field="*{isbn}"/></label><br>
+    <label>Shipping Weight<input type="text" th:field="*{shipping_weight}"/></label><br>
+    <label>List Price<input type="text" th:field="*{list_price}"/></label><br>
+    <label>Our Price<input type="text" th:field="*{our_price}"/></label><br>
+    <label>Number in Stock<input type="text" th:field="*{in_stock_number}"/></label><br>
     <label>Status
         <input type="radio" name="Status" th:value="1" th:field="*{active}"/>Active
         <input type="radio" name="Status" th:value="0" th:field="*{active}"/>Inactive
-    </label>
+    </label><br>
     <label>Description
         <textarea th:field="*{description}"></textarea>
-    </label>
+    </label><br>
     <label>
         <button type="submit" value="Submit">Add Book</button>
-    </label>
+    </label><br>
 </form>
+
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -6,6 +6,12 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Properties;
 
+/**
+ * Author: XLee
+ * Date: 2020/11/10 8:27
+ * Description: config PageHelper
+ */
+
 @Configuration
 public class PageHelperConfig {
     @Bean

@@ -41,7 +41,13 @@ public class DemoController {
     Book queryById(long id) {
         return bookService.queryById(id);
     }*/
-    @GetMapping("/book/booklist")
+
+    @GetMapping("/index")
+    public String index() {
+        return "index";
+    }
+
+    @GetMapping("/booklist")
     public ModelAndView bookList () {
 
 
@@ -55,7 +61,7 @@ public class DemoController {
     }
 
 
-    @GetMapping("/book/bookinfo")
+    @GetMapping("/bookinfo")
     public ModelAndView bookInfo (@Param(value = "id") long id) {
         Book book = bookService.queryById(id);
         ModelAndView modelAndView = new ModelAndView("bookInfo");
@@ -64,7 +70,7 @@ public class DemoController {
     }
 
 
-    @GetMapping("/book/add")
+    @GetMapping("/add")
     public String toAdd(Model model) {
 
         model.addAttribute("book", new Book());
@@ -72,7 +78,7 @@ public class DemoController {
     }
 
 
-    @PostMapping("/book/add")
+    @PostMapping("/add")
     public String add (@ModelAttribute Book book) {
         /*
         Book newBook = new Book();
@@ -103,8 +109,7 @@ public class DemoController {
     }
 
 
-
-    @GetMapping("/book/delete")
+    @GetMapping("/delete")
     public String delete (@Param(value = "id") long id) {
         int i = 0;
         try {
@@ -113,12 +118,7 @@ public class DemoController {
             e.printStackTrace();
             i = -1;
         }
-
-
         return i == 1 ? "success" : "error";
     }
-
-
-
 
 }
