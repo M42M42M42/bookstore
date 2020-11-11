@@ -20,7 +20,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
         //对所有的请求都进行拦截
         registry.addInterceptor((new LoginHandlerInterceptor()))
                 .addPathPatterns("/**")
-                .excludePathPatterns("/login");
+                .excludePathPatterns("/login", "/css/**", "/js/**");
 
 
     }
