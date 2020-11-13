@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Book</title>
+    <title>Edit Book</title>
     <link rel="stylesheet"  th:href="@{css/bootstrap.min.css}"/>
     <style>
         .my-content {
@@ -21,12 +21,13 @@
 <div class="">
     <div class="my-content">
         <div>
-            <a th:href="@{/booklist}">
-                <button  type="button" class="btn btn-primary" style="float: right">Back to Book List</button>
+            <a th:href="@{/bookinfo?id={id}(id=${book.id})}">
+                <button  type="button" class="btn btn-primary" style="float: right">Back to Book Information</button>
             </a>
         </div>
-        <form action="" th:action="@{add}" th:object="${book}" method="post">
-            <div><h3>Add New Book</h3></div>
+        <form action="" th:action="@{update}" th:object="${book}" method="post">
+            <input hidden="hidden" th:value="${id}" th:field="*{id}">
+            <div><h3>Edit Book</h3></div>
             <div class=" text-danger" th:text="${msg}"></div>
             <div>
                 <label class="control-label" for="input1">Title:</label>
@@ -109,7 +110,7 @@
             </div>
             <!-- 按钮触发模态框 -->
             <div>
-                <button type="button" class="btn btn-success btn-block " data-toggle="modal" data-target="#myModal">Add Book</button>
+                <button type="button" class="btn btn-success btn-block " data-toggle="modal" data-target="#myModal">Update Book</button>
             </div>
             <!-- 模态框（Modal） -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

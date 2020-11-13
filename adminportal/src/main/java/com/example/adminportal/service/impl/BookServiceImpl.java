@@ -25,8 +25,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public int delete(long id) { return bookMapper.delete(id);}
+    public int delete(long id) { return bookMapper.delete(id); }
 
     @Override
-    public int add(Book book) {return bookMapper.add(book);}
+    public int add(Book book) {return bookMapper.add(book); }
+
+    @Override
+    public int update(Book book) {return bookMapper.update(book); }
 }

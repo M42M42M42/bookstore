@@ -13,34 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class DemoController {
+public class BookController {
 
     static final int start = 0;
     static final int size = 10;
     @Autowired
     private BookServiceImpl bookService;
-/*
-    @RequestMapping("/")
-    public String listCategory (Model m,
-                               @RequestParam(value = "start", defaultValue = "0") int start,
-                               @RequestParam(value = "size", defaultValue = "20") int size) {
-
-
-        PageHelper.startPage(start, size, "id desc");
-        List<Book> list = bookService.queryAll();
-        PageInfo<Book> pageInfo = new PageInfo<>(list);
-
-
-        m.addAttribute("pageInfo", pageInfo);
-
-        return "index";
-    }*/
-
-    /*
-    @RequestMapping("/querybyid")
-    Book queryById(long id) {
-        return bookService.queryById(id);
-    }*/
 
     @GetMapping("/index")
     public String index() {
@@ -49,14 +27,14 @@ public class DemoController {
 
     @GetMapping("/booklist")
     public ModelAndView bookList () {
-
-
         //PageHelper.startPage(start, size, "id desc");
         List<Book> list = bookService.queryAll();
         //PageInfo<Book> pageInfo = new PageInfo<>(list);
         ModelAndView modelAndView = new ModelAndView("bookList");
         //modelAndView.addObject("pageInfo", pageInfo);
         modelAndView.addObject("bookList", list);
+        int [] checkedId = {};
+        modelAndView.addObject("checkedId", checkedId);
         return modelAndView;
     }
 
@@ -80,24 +58,6 @@ public class DemoController {
 
     @PostMapping("/add")
     public String add (@ModelAttribute Book book) {
-        /*
-        Book newBook = new Book();
-        newBook.setActive(book.isActive());
-        newBook.setAuthor(book.getAuthor());
-        newBook.setCategory(book.getCategory());
-        newBook.setDescription(book.getDescription());
-        newBook.setFormat(book.getFormat());
-        newBook.setIn_stock_number(book.getIn_stock_number());
-        newBook.setIsbn(book.getIsbn());
-        newBook.setLanguage(book.getLanguage());
-        newBook.setList_price(book.getList_price());
-        newBook.setNumber_of_pages(book.getNumber_of_pages());
-        newBook.setOur_price(book.getOur_price());
-        newBook.setPublication_date(book.getPublication_date());
-        newBook.setPublisher(book.getPublisher());
-        newBook.setShipping_weight(book.getShipping_weight());
-        newBook.setTitle(book.getTitle());*/
-
         int i = 0;
         try {
             i = bookService.add(book);
@@ -108,12 +68,20 @@ public class DemoController {
         return i == 1 ? "success" : "error";
     }
 
+    @GetMapping("/update")
+    public String toUpdate(Model model,
+                           @Param(value = "id") int id) {
+        Book book = bookService.queryById(id);
+        model.addAttribute("book", book);
+        return "updateBook";
+    }
 
-    @GetMapping("/delete")
-    public String delete (@Param(value = "id") long id) {
+
+    @PostMapping("/update")
+    public String update (@ModelAttribute Book book) {
         int i = 0;
         try {
-            i = bookService.delete(id);
+            i = bookService.update(book);
         } catch (Exception e) {
             e.printStackTrace();
             i = -1;
@@ -121,4 +89,17 @@ public class DemoController {
         return i == 1 ? "success" : "error";
     }
 
+    @PostMapping("/delete")
+    public String delete (@Param(value = "checkedId") int[] checkedId) {
+        int i = 1;
+        for(int id : checkedId) {
+            try {
+                bookService.delete(id);
+            } catch (Exception e) {
+                e.printStackTrace();
+                i = -1;
+            }
+        }
+        return i == 1 ? "success" : "error";
+    }
 }

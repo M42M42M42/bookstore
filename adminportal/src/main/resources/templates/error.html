@@ -4,11 +4,24 @@
     <meta charset="UTF-8">
     <title>Error</title>
     <link rel="stylesheet"  th:href="@{css/bootstrap.min.css}"/>
+    <style>
+        .my-content {
+            width: 400px;
+            padding: 50px;
+            background-color: #eee;
+            margin: 100px auto 0 auto;
+        }
+    </style>
 </head>
 <body>
-<h1>Error</h1>
-<p>Something went wrong.</p>
-<a th:href="@{/booklist}"><button>Go Back</button></a>
+<div role="navigation" th:replace="~{commons::topbar}"></div>
+<div class="">
+    <div class="my-content">
+        <h1>Error</h1>
+        <p>Something went wrong.</p>
+        <a th:href="@{/booklist}"><button class="btn btn-success btn-block">Go Back</button></a>
+    </div>
+</div>
 <script src="js/jquery-3.5.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>

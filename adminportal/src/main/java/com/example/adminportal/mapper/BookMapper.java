@@ -39,4 +39,11 @@ public interface BookMapper {
             "#{book.format}, #{book.in_stock_number}, #{book.isbn}, #{book.language}, #{book.list_price}, #{book.number_of_pages}, " +
             "#{book.our_price}, #{book.publication_date}, #{book.publisher}, #{book.shipping_weight}, #{book.title})")
     int add(@Param("book") Book book);
+
+    @Update("UPDATE book SET active=#{book.active}, author=#{book.author}, category=#{book.category}, description=#{book.description}," +
+            "format=#{book.format}, in_stock_number=#{book.in_stock_number}," +
+            "isbn=#{book.isbn}, language=#{book.language}, list_price=#{book.list_price}, number_of_pages=#{book.number_of_pages}, " +
+            "our_price=#{book.our_price}, publication_date=#{book.publication_date}, publisher=#{book.publisher}, " +
+            "shipping_weight=#{book.shipping_weight}, title=#{book.title} WHERE id=#{book.id}")
+    int update(@Param("book") Book book);
 }
